@@ -1,42 +1,62 @@
-import * as React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 
 import { Link } from "gatsby"
-
+import WebFont from 'webfontloader';
 
 import Blog from "./blog"
+import '../styles.css'
 
 
 export default function Home({ data }) {
 
   const { title, description } = data.site.siteMetadata
-  const { posts } = data.blog 
+  const { posts } = data.blog
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Anek Tamil', 'sans-serif']
+      }
+    })
+  }, [])
 
   return (
-
     <div>
-      <h1>{title}</h1>
+      <header className="Header">
+
+        <h1 className="Logo">Gyasi Calhoun</h1>
+
+        <nav className="Nav">
+          <h1 className="small-logo">Gyasi Calhoun</h1>
+          <Link to="/blog">Read my blog</Link>
+          <a>Campaigns</a>
+          <a>Contact</a>
+        </nav>
+      </header>
+
+      <h1 className="font-loader">{title}</h1>
       <p>{description}</p>
-      <img style={{height: '450px', width: '711px'}} alt="Cute dog" src={data.image.publicURL} />
-      <br/>
-      <Link to="/blog">Read my blog</Link>
+      <img style={{ height: '450px', width: '711px' }} alt="Cute dog" src={data.image.publicURL} />
+      <br />
+
       {
         posts.map(post => (
           <article key={post.id}>
             <Link to={post.fields.slug}>
-            <small>
-              {post.frontmatter.author}, {post.frontmatter.date}
-            </small>
-            <p>
-              {post.excerpt}
-            </p>
+              <small>
+                {post.frontmatter.author}, {post.frontmatter.date}
+              </small>
+              <p>
+                {post.excerpt}
+              </p>
             </Link>
           </article>
         ))
       }
     </div>
 
-   
+
   )
 }
 
