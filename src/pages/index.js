@@ -30,8 +30,8 @@ export default function Home({ data }) {
         <nav className="Nav">
           <h1 className="small-logo">Gyasi Calhoun</h1>
           <Link to="/blog">Read my blog</Link>
-          <a>Campaigns</a>
-          <a>Contact</a>
+          <Link>Campaigns</Link>
+          <Link>Contact</Link>
         </nav>
       </header>
 

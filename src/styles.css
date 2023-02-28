@@ -11,9 +11,18 @@
   /* gives the .Nav class a name so it can be referenced by the grid-template-areas above*/
     grid-area: nav;
     display: grid;
-    grid-template-columns: repeat(4,auto);
+    grid-template-columns: repeat(3,auto);
     align-items: center;
     justify-items: center;
+  }
+
+  .Logo {
+    margin-left: 20px;
+  }
+
+  .Nav > * {
+    justify-self: end;
+    margin: 0 20px;
   }
 
   .small-logo {
@@ -31,6 +40,10 @@
         grid-template-rows: repeat(4,auto);
         grid-template-columns: none;
         grid-row-gap: 20px;
+    }
+
+    .Nav > * {
+      justify-self: center;
     }
 
     .Logo {
