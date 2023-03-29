@@ -25,19 +25,38 @@ export default function Home({ data }) {
     <div>
       <header className="Header">
 
-        <h1 className="Logo">Gyasi Calhoun</h1>
+        <div className="logo-container">
+          <h3 className="Logo">Gyasi Linje.</h3>
+        </div>
 
         <nav className="Nav">
-          <h1 className="small-logo">Gyasi Calhoun</h1>
+          <h1 className="small-logo">Gyasi Linje.</h1>
           <Link to="/blog">Read my blog</Link>
           <Link>Campaigns</Link>
           <Link>Contact</Link>
         </nav>
       </header>
+      <div className="main-container">
 
-      <h1 className="font-loader">{title}</h1>
-      <p>{description}</p>
-      <img style={{ height: '450px', width: '711px' }} alt="Cute dog" src={data.image.publicURL} />
+        <h1 className="small-header">{title}</h1>
+        <h2 className="large-subheader">Writings from Gyasi Linje</h2>
+        <p>{description}</p>
+
+
+        {/* <div className="container">
+          <img className="main-img" alt="Cute dog" src={data.image.publicURL} />
+          <div className="bottom-left">
+            <small>{posts[0].frontmatter.date}</small>
+            <br/>
+            <h2 className="small-margin">{posts[0].excerpt}</h2>
+          </div>
+        </div> */}
+
+
+        
+      </div>
+
+
       <br />
 
       {

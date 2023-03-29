@@ -10,8 +10,8 @@
 module.exports = {
 
   siteMetadata: {
-    title: 'Welcome to gyasi.io',
-    description: `This is Gyasi Linje's blog post where you can stay up to date with latest content. `
+    title: 'the blog',
+    description: `Stay up to date with the latest content from Gyasi Linje. `
   },
   plugins: [
     {

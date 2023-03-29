@@ -4,14 +4,19 @@
 
   .Header {
     display: grid;
-    grid-template-areas: "logo nav"
+    grid-template-areas: "logo nav";
+  }
+
+  .large-subheader {
+    font-size: 48px;
+    margin-top: 10px;
   }
 
   .Nav {
-  /* gives the .Nav class a name so it can be referenced by the grid-template-areas above*/
+    /* gives the .Nav class a name so it can be referenced by the grid-template-areas above*/
     grid-area: nav;
     display: grid;
-    grid-template-columns: repeat(3,auto);
+    grid-template-columns: repeat(3, auto);
     align-items: center;
     justify-items: center;
   }
@@ -20,7 +25,7 @@
     margin-left: 20px;
   }
 
-  .Nav > * {
+  .Nav>* {
     justify-self: end;
     margin: 0 20px;
   }
@@ -28,30 +33,84 @@
   .small-logo {
     display: none;
   }
-  
 
- 
+
+
   @media (max-width: 700px) {
     .Header {
-        grid-template-areas: "logo space" "nav nav";
+      grid-template-areas: "logo space" "nav nav";
     }
 
     .Nav {
-        grid-template-rows: repeat(4,auto);
-        grid-template-columns: none;
-        grid-row-gap: 20px;
+      grid-template-rows: repeat(4, auto);
+      grid-template-columns: none;
+      grid-row-gap: 20px;
     }
 
-    .Nav > * {
+    .Nav>* {
       justify-self: center;
     }
 
     .Logo {
-        display: none;
+      display: none;
     }
 
     .small-logo {
-        display: block;
+      display: block;
     }
 
+    .container {
+      height: 20vh !important;
+      width: 60vw !important;
+    }
+
+  }
+
+  .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10vh;
+  }
+
+  .container {
+    position: relative;
+    text-align: center;
+    background-image: url("./images/headshot.jpg");
+    height: 250px;
+    width: 250px;
+    background-position: 0px 0px;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    color: white;
+    border-radius: 50%;
+    margin-top: 50px;
+  }
+
+  .bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+  }
+
+
+  small {
+    display: block;
+    text-align: left;
+  }
+
+  .main-img {
+    height: 450px;
+    width: 100%;
+  }
+
+  h1, h2, h3, p {
+    height: 15px;
+  }
+
+  .small-header {
+    font-size: 20px;
+   margin: 0;
   }
