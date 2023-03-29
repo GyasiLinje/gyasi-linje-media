@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 import WebFont from 'webfontloader';
 
 import Blog from "./blog"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import '../styles.css'
 
 
@@ -12,6 +13,19 @@ export default function Home({ data }) {
 
   const { title, description } = data.site.siteMetadata
   const { posts } = data.blog
+
+
+  // let featuredImg = getImage(posts[0].frontmatter.featuredImage?.childImageSharp?.gatsbyImageData)
+  let featuredImg = getImage(posts[0].frontmatter.featuredImage?.childImageSharp?.getImageData);
+  const firstNElements = posts.slice(-1).map(({ id, excerpt}) => {
+  
+    return (
+      <div>
+        <GatsbyImage image={featuredImg} />
+        <p key={id}>{excerpt}</p>
+      </div>
+    )
+  });
 
   useEffect(() => {
     WebFont.load({
@@ -21,8 +35,9 @@ export default function Home({ data }) {
     })
   }, [])
 
+
   return (
-    <div>
+    <div className="site-container">
       <header className="Header">
 
         <div className="logo-container">
@@ -49,33 +64,36 @@ export default function Home({ data }) {
             <small>{posts[0].frontmatter.date}</small>
             <br/>
             <h2 className="small-margin">{posts[0].excerpt}</h2>
-          </div>
+          </div> 
         </div> */}
 
 
-        
+
       </div>
 
 
       <br />
+      <div className="content-container">
+        {firstNElements}
 
-      {
-        posts.map(post => (
-          <article key={post.id}>
-            <Link to={post.fields.slug}>
-              <small>
-                {post.frontmatter.author}, {post.frontmatter.date}
-              </small>
-              <p>
-                {post.excerpt}
-              </p>
-            </Link>
-          </article>
-        ))
-      }
+        {/* {
+          posts.map(post => (
+            
+            <article key={post.id}>
+              <Link to={post.fields.slug}>
+                <small>
+                  {post.frontmatter.author}, {post.frontmatter.date}
+                </small>
+                <p>
+                  {post.excerpt}
+                </p>
+              </Link>
+            </article>
+          ))
+        } */}
+      </div>
+
     </div>
-
-
   )
 }
 
@@ -92,6 +110,11 @@ export const pageQuery = graphql`
           date(fromNow: true)
           title
           author
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData(width: 800)
+            }
+          }
         }
         excerpt
         id

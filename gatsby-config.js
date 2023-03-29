@@ -14,6 +14,10 @@ module.exports = {
     description: `Stay up to date with the latest content from Gyasi Linje. `
   },
   plugins: [
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
