@@ -17,12 +17,15 @@ export default function Home({ data }) {
 
   // let featuredImg = getImage(posts[0].frontmatter.featuredImage?.childImageSharp?.gatsbyImageData)
   let featuredImg = getImage(posts[0].frontmatter.featuredImage?.childImageSharp?.getImageData);
-  const firstNElements = posts.slice(-1).map(({ id, excerpt}) => {
-  
+ 
+  const firstNElements = posts.slice(-1).map(({ id, excerpt }) => {
+
+    console.log(excerpt)
+
     return (
-      <div>
-        <GatsbyImage image={featuredImg} />
-        <p key={id}>{excerpt}</p>
+      <div className="container">
+        {/* <GatsbyImage image={featuredImg} />
+        <p key={id}>{excerpt}</p> */}
       </div>
     )
   });
@@ -76,7 +79,7 @@ export default function Home({ data }) {
       <div className="content-container">
         {firstNElements}
 
-        {/* {
+        {
           posts.map(post => (
             
             <article key={post.id}>
@@ -90,7 +93,7 @@ export default function Home({ data }) {
               </Link>
             </article>
           ))
-        } */}
+        }
       </div>
 
     </div>
